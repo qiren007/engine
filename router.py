@@ -25,8 +25,8 @@ class Router:
     """
     store the messages from vinzor server and forward it to right image
     """
-    ROUTE_TABLE = {'win7_32_20G_dev_base.img', }
-    __lock = threading.Lock()
+    ROUTE_TABLE = {}
+    lock = threading.Lock()
 
     def __init__(self):
         pass
@@ -50,17 +50,19 @@ class Router:
         logger.debug(self.ROUTE_TABLE)
         if template_id in self.ROUTE_TABLE:
             resp = self.ROUTE_TABLE[template_id].get()
-            Router.__lock.acquire()
+            self.lock.acquire()
             if self.ROUTE_TABLE[template_id].empty():
+                logger.info('delete record %s' % template_id)
                 del self.ROUTE_TABLE[template_id]
-            Router.__lock.release()
+            self.lock.release()
             return resp
         return None
 
     def tmpl_store(self, data):
+        print(data)
         if self._check(data):
             ss = data['param']['template_id']
-            Router.__lock.acquire()
+            self.lock.acquire()
             del data['param']['template_id']
             del data['param']['template_name']
             del data['param']['template_type']
@@ -69,7 +71,7 @@ class Router:
             if ss not in self.ROUTE_TABLE:
                 self.ROUTE_TABLE[ss] = Queue()
             self.ROUTE_TABLE[ss].put(data)
-            Router.__lock.release()
+            self.lock.release()
             return True
         return False
 

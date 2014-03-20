@@ -1,0 +1,74 @@
+2014-03-19 04:25:06,729 views.py ERROR 46 'function' object has no attribute '_Router__lock'
+2014-03-19 04:28:01,526 router.py DEBUG 49 win7_32_20G_dev_base.img
+2014-03-19 04:28:01,526 router.py DEBUG 50 {'win7_32_20G_dev_base.img'}
+2014-03-19 04:28:01,663 router.py DEBUG 49 win7_32_20G_dev_base.img
+2014-03-19 04:28:01,663 router.py DEBUG 50 {'win7_32_20G_dev_base.img'}
+2014-03-19 04:28:01,808 router.py DEBUG 49 win7_32_20G_dev_base.img
+2014-03-19 04:28:01,808 router.py DEBUG 50 {'win7_32_20G_dev_base.img'}
+2014-03-19 04:29:26,180 views.py ERROR 46 'function' object has no attribute '_Router__lock'
+2014-03-19 04:29:33,529 router.py DEBUG 49 win7_32_20G_dev_base.img
+2014-03-19 04:29:33,529 router.py DEBUG 50 {}
+2014-03-19 04:29:33,530 views.py INFO 25 query template win7_32_20G_dev_base.img
+2014-03-19 04:29:33,530 views.py INFO 33 no such template in route table should forward
+2014-03-19 04:35:47,034 views.py ERROR 46 'function' object has no attribute 'lock'
+2014-03-19 04:36:01,483 router.py DEBUG 49 win7_32_20G_dev_base.img
+2014-03-19 04:36:01,483 router.py DEBUG 50 {}
+2014-03-19 04:36:01,484 views.py INFO 25 query template win7_32_20G_dev_base.img
+2014-03-19 04:36:01,484 views.py INFO 33 no such template in route table should forward
+2014-03-19 04:41:06,568 views.py ERROR 46 'function' object has no attribute 'lock'
+2014-03-19 05:23:49,603 views.py INFO 49 store request successfully
+2014-03-19 05:23:49,605 worker.py INFO 55 start to select image of bff6ac4e-6c94-4556-a4de-355eb88afc9e.iso
+2014-03-19 05:24:12,107 router.py DEBUG 49 win7_32_20G_dev_base.img
+2014-03-19 05:24:12,109 router.py DEBUG 50 {'bff6ac4e-6c94-4556-a4de-355eb88afc9e.iso': <multiprocessing.queues.Queue object at 0x7f25a72f0690>}
+2014-03-19 05:24:12,110 views.py INFO 25 query template win7_32_20G_dev_base.img
+2014-03-19 05:24:12,111 views.py INFO 33 no such template in route table should forward
+2014-03-19 05:28:35,759 views.py INFO 49 store request successfully
+2014-03-19 05:28:35,761 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:28:55,050 router.py DEBUG 49 win7_32_20G_dev_base.img
+2014-03-19 05:28:55,051 router.py DEBUG 50 {'cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso': <multiprocessing.queues.Queue object at 0x7f25a7d26850>, 'bff6ac4e-6c94-4556-a4de-355eb88afc9e.iso': <multiprocessing.queues.Queue object at 0x7f25a72f0690>}
+2014-03-19 05:28:55,052 views.py INFO 25 query template win7_32_20G_dev_base.img
+2014-03-19 05:28:55,053 views.py INFO 33 no such template in route table should forward
+2014-03-19 05:34:13,155 views.py INFO 49 store request successfully
+2014-03-19 05:34:15,563 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:36:28,000 router.py DEBUG 49 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:36:28,001 router.py DEBUG 50 {'cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso': <multiprocessing.queues.Queue object at 0x7f2f9a54b990>}
+2014-03-19 05:36:28,004 views.py INFO 25 query template cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:36:28,005 views.py INFO 30 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso forward successfully
+2014-03-19 05:48:32,013 views.py INFO 49 store request successfully
+2014-03-19 05:48:32,021 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:50:21,597 views.py INFO 49 store request successfully
+2014-03-19 05:50:21,598 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:51:03,015 router.py DEBUG 49 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:51:03,018 router.py DEBUG 50 {'cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso': <multiprocessing.queues.Queue object at 0x7f4c8a0bd810>}
+2014-03-19 05:51:03,018 views.py INFO 25 query template cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:51:03,019 views.py INFO 30 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso forward successfully
+2014-03-19 05:54:09,420 router.py DEBUG 49 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:54:09,420 router.py DEBUG 50 {'cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso': <multiprocessing.queues.Queue object at 0x7f4c8a0bd810>}
+2014-03-19 05:54:09,421 views.py INFO 25 query template cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:54:09,421 views.py INFO 30 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso forward successfully
+2014-03-19 05:59:00,251 router.py DEBUG 49 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:59:00,252 router.py DEBUG 50 {}
+2014-03-19 05:59:00,253 views.py INFO 25 query template cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 05:59:00,253 views.py INFO 33 no such template in route table should forward
+2014-03-19 06:02:58,358 views.py INFO 49 store request successfully
+2014-03-19 06:02:58,359 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:03:04,934 router.py DEBUG 49 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:03:04,934 router.py DEBUG 50 {'cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso': <multiprocessing.queues.Queue object at 0x7f4c89e8f2d0>}
+2014-03-19 06:03:04,935 views.py INFO 25 query template cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:03:04,935 views.py INFO 30 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso forward successfully
+2014-03-19 06:23:48,812 views.py INFO 49 store request successfully
+2014-03-19 06:23:48,813 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:23:54,349 router.py DEBUG 49 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:23:54,350 router.py DEBUG 50 {'cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso': <multiprocessing.queues.Queue object at 0x7f4c89e80fd0>}
+2014-03-19 06:23:54,352 views.py INFO 25 query template cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:23:54,352 views.py INFO 30 cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso forward successfully
+2014-03-19 06:45:38,210 views.py INFO 49 store request successfully
+2014-03-19 06:45:38,211 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:46:37,649 views.py INFO 49 store request successfully
+2014-03-19 06:46:37,653 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:48:42,163 views.py INFO 49 store request successfully
+2014-03-19 06:48:42,165 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:49:47,186 views.py INFO 49 store request successfully
+2014-03-19 06:49:47,188 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso
+2014-03-19 06:57:29,835 views.py INFO 49 store request successfully
+2014-03-19 06:57:29,837 worker.py INFO 55 start to select image of cfcb4d93-ff18-48e9-9784-55c7cf6d6ae9.iso

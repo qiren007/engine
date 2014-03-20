@@ -15,8 +15,8 @@ logger = logging.getLogger('engine')
 
 
 class Worker(threading.Thread):
-    __count = 0
-    __lock = threading.Lock()
+    _count = 0
+    _lock = threading.Lock()
 
     def __init__(self, template_id, image_type, image_name, is_public=True, *args, **kwargs):
         """
@@ -36,14 +36,14 @@ class Worker(threading.Thread):
     def select_img(self):
         tmpl = os.path.join(settings.LOCAL_IMAGE_WAREHOUSE, self.template_id)
         if os.path.isfile(tmpl):
-            tmp_name = str(Worker.__count) + '_' + self.image_name
+            tmp_name = str(self._count) + '_' + self.image_name
             if not os.path.isfile(os.path.join(settings.TEMP, tmp_name)):
                 shutil.copy2(tmpl, os.path.join(settings.TEMP, tmp_name))
-            self.count_num = Worker.__count
-            Worker.__lock.acquire()
-            Worker.__count += 1
-            Worker.__lock.release()
-            return Worker.__count
+            self.count_num = self._count
+            self._lock.acquire()
+            self._count += 1
+            self._lock.release()
+            return self._count
         return None
 
     def clean_tmp_img(self):
