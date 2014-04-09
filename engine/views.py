@@ -12,6 +12,7 @@ from router import router
 import log as logging
 import worker
 import copy
+import settings
 
 logger = logging.getLogger('engine')
 
@@ -20,6 +21,8 @@ logger = logging.getLogger('engine')
 def query_op(request):
     if request.method == 'POST':
         req = simplejson.loads(request.body.decode())
+        logger.debug(request.META.get('REMOTE_ADDR'))
+        logger.debug(req)
         try:
             resp = router.tmpl_forward(req['template_id'])
             logger.info('query template %s' % req['template_id'])
@@ -37,19 +40,31 @@ def query_op(request):
 @csrf_exempt
 def install(request):
     if request.method == 'POST':
-        data = simplejson.loads(request.body.decode())
-
-        req = copy.deepcopy(data)
+        remote_ip = request.META.get('REMOTE_ADDR')
         try:
-            res = router.tmpl_store(data)
+            data = simplejson.loads(request.body.decode())
         except Exception as ex:
             logger.error(ex)
-        else:
-            if res:
-                logger.info('store request successfully')
-                work = worker.Worker(req['param']['template_id'], req['param']['template_type'],
-                                     req['param']['template_name'], req['param']['template_is_public'])
-                work.start()
-                return HttpResponse(simplejson.dumps({'result': 'success'}))
+            return HttpResponse(simplejson.dumps({'result': 'fail'}))
+        data['remote_ip'] = 'http://%s:%s' % (remote_ip, settings.SERVER_PORT)
+        req = copy.deepcopy(data)
+        if router.tmpl_store(data):
+            logger.info('store request successfully')
+            req['param']['template_url'] = 'http://%s:%s%s' % (remote_ip,
+                                                              settings.SERVER_PORT,
+                                                              req['param']['template_url'])
+            job = worker.MakeTemplate(req['param']['template_id'],
+                                      req['param']['template_type'],
+                                      req['param']['template_name'],
+                                      req['remote_ip'],
+                                      src=req['param']['template_source'],
+#                                       checksum=req['param']['template_checksum'],
+                                      checksum='e32fc383b3a787f5c5b39f5455a539d8',
+                                      is_public=req['param']['template_is_public'],
+                                      fs=req['param']['template_fs'],
+                                      remote_image_path=req['param']['template_url'],
+                                      worker=worker.engine_thr_pool)
+            worker.engine_thr_pool.add_job('make_tmpl', job.do_job)
+            return HttpResponse(simplejson.dumps({'result': 'success'}))
     return HttpResponse(simplejson.dumps({'result': 'fail'}))
 

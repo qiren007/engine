@@ -7,6 +7,7 @@ import log as logging
 import threading
 import settings
 from multiprocessing import Queue
+from functools import reduce
 
 logger = logging.getLogger('engine')
 
@@ -26,27 +27,27 @@ class Router:
     store the messages from vinzor server and forward it to right image
     """
     ROUTE_TABLE = {}
+    TEMPLATE_INFO_LIST = ['template_id', 'packages', 'template_name', 'template_is_public',
+                          'template_type', 'template_url', 'template_fs', 'template_checksum',
+                          'template_source']
+    VINZOR_HEADER = ['name', 'device_id', 'pdu', 'request_id', 'code', 'param', 'remote_ip']
+    ENGINE_RECV_PACKAGES_KEY = ['name', 'display_name', 'version', 'os_type', 'os_architecture',
+                        'checksum', 'install_cmd', 'priority', 'path']
     lock = threading.Lock()
 
     def __init__(self):
         pass
 
     def _check(self, data):
-        for i in settings.VINZOR_HEADER:
-            if i not in data:
-                return False
-        if 'template_id' in data['param'] and 'packages' in data['param'] and \
-            'template_name' in data['param'] and 'template_is_public' in data['param'] and \
-            'template_type' in data['param']:
-            for i in settings.ENGINE_RECV_PACKAGES_KEY:
-                for j in data['param']['packages']:
-                    if i not in j:
-                        return False
+        if not set(self.VINZOR_HEADER) ^ set(data.keys()) and \
+           not set(self.TEMPLATE_INFO_LIST) ^ set(data['param'].keys()):
+            for i in data['param']['packages']:
+                if set(self.ENGINE_RECV_PACKAGES_KEY) ^ set(i.keys()):
+                    return False
             return True
         return False
 
     def tmpl_forward(self, template_id):
-        logger.debug(template_id)
         logger.debug(self.ROUTE_TABLE)
         if template_id in self.ROUTE_TABLE:
             resp = self.ROUTE_TABLE[template_id].get()
@@ -59,14 +60,10 @@ class Router:
         return None
 
     def tmpl_store(self, data):
-        print(data)
+        logger.debug(data)
         if self._check(data):
             ss = data['param']['template_id']
             self.lock.acquire()
-            del data['param']['template_id']
-            del data['param']['template_name']
-            del data['param']['template_type']
-            del data['param']['template_is_public']
             data['param'] = data['param']['packages']
             if ss not in self.ROUTE_TABLE:
                 self.ROUTE_TABLE[ss] = Queue()
